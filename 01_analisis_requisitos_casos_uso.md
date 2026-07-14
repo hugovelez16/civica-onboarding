@@ -73,18 +73,20 @@ Todos los archivos subidos al sistema deben pasar un filtro de tamaño máximo d
 ## 4. Diagrama de Casos de Uso (Mermaid.js)
 
 ```mermaid
-usecaseDiagram
-    actor "Nuevo Empleado" as Empleado
-    actor "Administración (Talento & People Care)" as Admin
+graph TD
+    subgraph Actores
+        Empleado[Nuevo Empleado]
+        Admin[Administración - Talento & People Care]
+    end
 
-    rectangle "Sistema de Onboarding Cívica" {
-        usecase "UC-01: Configuración de Campos y Plantillas" as UC01
-        usecase "UC-02: Generación e Invitación de Onboarding" as UC02
-        usecase "UC-03: Autenticación mediante Enlace Seguro (OTP)" as UC03
-        usecase "UC-04: Completado y Envío de Formulario" as UC04
-        usecase "UC-05: Revisión y Validación de la Documentación" as UC05
-        usecase "UC-06: Subsanación de Errores" as UC06
-    }
+    subgraph Sistema ["Sistema de Onboarding Cívica"]
+        UC01((UC-01: Configuración de Campos y Plantillas))
+        UC02((UC-02: Generación e Invitación de Onboarding))
+        UC03((UC-03: Autenticación mediante Enlace Seguro OTP))
+        UC04((UC-04: Completado y Envío de Formulario))
+        UC05((UC-05: Revisión y Validación de la Documentación))
+        UC06((UC-06: Subsanación de Errores))
+    end
 
     Admin --> UC01
     Admin --> UC02
@@ -94,9 +96,9 @@ usecaseDiagram
     Empleado --> UC04
     Empleado --> UC06
 
-    UC02 ..> UC03 : <<trigger email>>
-    UC04 ..> UC05 : <<trigger notification>>
-    UC05 ..> UC06 : <<conditional trigger on reject>>
+    UC02 -.->|trigger email| UC03
+    UC04 -.->|trigger notification| UC05
+    UC05 -.->|conditional trigger on reject| UC06
 ```
 
 ---
