@@ -5,7 +5,7 @@ Este documento describe el diseño de la base de datos relacional para el sistem
 
 ---
 
-## 📌 1. Estrategia de Diseño para Formularios Dinámicos
+## 1. Estrategia de Diseño para Formularios Dinámicos
 
 Para cumplir con el requisito de que Recursos Humanos pueda configurar dinámicamente qué datos y documentos solicitar, se han evaluado tres alternativas de diseño en PostgreSQL:
 
@@ -27,7 +27,7 @@ Para cumplir con el requisito de que Recursos Humanos pueda configurar dinámica
 
 ---
 
-## 🗺️ 2. Diagrama Entidad-Relación (ERD - Mermaid.js)
+## 2. Diagrama Entidad-Relación (ERD - Mermaid.js)
 
 El siguiente diagrama detalla las tablas de la base de datos, sus llaves primarias (PK), llaves foráneas (FK) y sus relaciones.
 
@@ -119,7 +119,7 @@ erDiagram
 
 ---
 
-## 📖 3. Diccionario de Datos
+## 3. Diccionario de Datos
 
 ### 3.1. Tabla: `empleado_onboarding`
 Almacena la información principal de la invitación de incorporación del empleado y el flujo de autenticación passwordless.
@@ -225,7 +225,7 @@ Historial de aprobaciones y rechazos puntuales de campos y archivos, permitiendo
 
 ---
 
-## 🔒 4. Integridad Referencial y Restricciones Físicas
+## 4. Integridad Referencial y Restricciones Físicas
 
 * **Claves Primarias (PK) y Foráneas (FK):** Todas las relaciones se gestionan a través de UUIDv4 generados por la base de datos, lo que dificulta la enumeración de recursos (evitando vulnerabilidades IDOR) en las URLs de la aplicación.
 * **Borrado en Cascada (ON DELETE CASCADE):** 

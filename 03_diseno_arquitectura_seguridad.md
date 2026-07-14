@@ -5,7 +5,7 @@ Este documento detalla las justificaciones y especificaciones de arquitectura de
 
 ---
 
-## 🔐 1. Mecanismo de Autenticación Passwordless / OTP
+## 1. Mecanismo de Autenticación Passwordless / OTP
 
 Dado que los nuevos empleados no disponen de cuentas corporativas activas ni están registrados en el Directorio Activo de la compañía, se implementa un mecanismo de acceso sin contraseña seguro y temporal.
 
@@ -58,7 +58,7 @@ sequenceDiagram
 
 ---
 
-## 📁 2. Almacenamiento Seguro de Ficheros (PDF/JPG)
+## 2. Almacenamiento Seguro de Ficheros (PDF/JPG)
 
 Los documentos subidos por los nuevos empleados (DNI, IBAN, Modelo 145, etc.) son Datos de Carácter Personal (RGPD). Su almacenamiento y descarga deben estar estrictamente controlados.
 
@@ -93,7 +93,7 @@ graph TD
 
 ---
 
-## 🚦 3. Máquina de Estados del Expediente de Onboarding
+## 3. Máquina de Estados del Expediente de Onboarding
 
 La máquina de estados conceptual define el ciclo de vida del proceso de onboarding de cada nuevo empleado, regulando las acciones permitidas y la visibilidad de los datos.
 
@@ -140,7 +140,7 @@ La máquina de estados conceptual define el ciclo de vida del proceso de onboard
 
 ---
 
-## ✉️ 4. Estrategia de Notificaciones por Email
+## 4. Estrategia de Notificaciones por Email
 
 Las comunicaciones por correo electrónico son el canal clave de interacción entre el sistema, el empleado y RRHH. Se conceptualiza un servicio desacoplado y robusto de mensajería.
 

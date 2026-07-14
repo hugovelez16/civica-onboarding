@@ -5,7 +5,7 @@ Este documento detalla el análisis de requisitos de negocio, la especificación
 
 ---
 
-## 📌 1. Introducción y Objetivos
+## 1. Introducción y Objetivos
 El objetivo principal del sistema es digitalizar, automatizar y asegurar el proceso de recopilación y validación de la información y documentación requerida para el alta de nuevos empleados en **Cívica**. 
 La solución garantiza:
 1. **Autonomía y Flexibilidad:** RRHH puede configurar dinámicamente los campos requeridos y plantillas de documentos.
@@ -14,7 +14,7 @@ La solución garantiza:
 
 ---
 
-## 👥 2. Actores del Sistema
+## 2. Actores del Sistema
 
 El sistema interactúa con dos actores diferenciados:
 
@@ -28,7 +28,7 @@ El sistema interactúa con dos actores diferenciados:
 
 ---
 
-## 📋 3. Reglas de Negocio (Validación y Seguridad de Datos)
+## 3. Reglas de Negocio (Validación y Seguridad de Datos)
 
 A continuación se detallan las reglas de validación obligatorias aplicadas a nivel de Frontend y Backend.
 
@@ -70,7 +70,7 @@ Todos los archivos subidos al sistema deben pasar un filtro de tamaño máximo d
 
 ---
 
-## 🗺️ 4. Diagrama de Casos de Uso (Mermaid.js)
+## 4. Diagrama de Casos de Uso (Mermaid.js)
 
 ```mermaid
 usecaseDiagram
@@ -101,7 +101,7 @@ usecaseDiagram
 
 ---
 
-## 📝 5. Especificación de Casos de Uso
+## 5. Especificación de Casos de Uso
 
 ### UC-01: Configuración de Campos y Plantillas Dinámicas
 | Elemento | Descripción |
@@ -169,7 +169,7 @@ usecaseDiagram
 
 ---
 
-## 📈 6. Ciclo de Vida del Estado del Onboarding
+## 6. Ciclo de Vida del Estado del Onboarding
 
 El flujo del proceso sigue una máquina de estados estrictamente secuencial y lógica en la que cada transición responde a una acción específica de los actores o del sistema. La máquina de estados conceptual se define de la siguiente manera:
 
