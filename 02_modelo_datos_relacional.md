@@ -131,7 +131,7 @@ Almacena la información principal de la invitación de incorporación del emple
 | `nombre` | `VARCHAR(100)` | `NOT NULL` | Nombre de pila del nuevo empleado. |
 | `primer_apellido` | `VARCHAR(100)` | `NOT NULL` | Primer apellido del nuevo empleado. |
 | `segundo_apellido` | `VARCHAR(100)` | `NULL` | Segundo apellido del nuevo empleado. |
-| `estado` | `VARCHAR(50)` | `NOT NULL` | Estado del onboarding: `Creado`, `Enviado_Enlace`, `En_Progreso`, `Completado_Pendiente_Validacion`, `Validado`, `Rechazado_Subsanacion`. |
+| `estado` | `VARCHAR(50)` | `NOT NULL` | Estado del onboarding: `Creado`, `EnviadoEnlace`, `EnProgreso`, `CompletadoPendienteValidacion`, `Validado`, `RechazadoSubsanacion`. |
 | `token_otp_hash` | `VARCHAR(64)` | `NULL` | Hash SHA-256 del token OTP/Magic Link temporal generado para el acceso. |
 | `token_expiracion` | `TIMESTAMP` | `NULL` | Fecha y hora límite para hacer uso del token OTP activo. |
 | `token_usado` | `BOOLEAN` | `NOT NULL, DEFAULT FALSE` | Flag para marcar si el token actual ya ha sido consumido. |

@@ -132,11 +132,11 @@ La máquina de estados conceptual define el ciclo de vida del proceso de onboard
 
 ### Transiciones y Reglas de Negocio
 * **Creado:** Expediente inicial registrado en base de datos. El empleado no puede acceder porque no posee token.
-* **Enviado_Enlace:** Se ha generado el hash OTP y se ha enviado el correo. El empleado puede autenticarse. Si expira o el administrador lo decide, se puede regenerar y reenviar (reiniciando la expiración).
-* **En_Progreso:** El empleado ha accedido. El formulario web está desbloqueado para que el empleado complete la información.
-* **Completado_Pendiente_Validacion:** El empleado ha guardado y enviado todos los requisitos obligatorios. **El formulario se bloquea** en el frontend y no se permiten modificaciones del empleado. Se envía notificación a RRHH.
+* **EnviadoEnlace:** Se ha generado el hash OTP y se ha enviado el correo. El empleado puede autenticarse. Si expira o el administrador lo decide, se puede regenerar y reenviar (reiniciando la expiración).
+* **EnProgreso:** El empleado ha accedido. El formulario web está desbloqueado para que el empleado complete la información.
+* **CompletadoPendienteValidacion:** El empleado ha guardado y enviado todos los requisitos obligatorios. **El formulario se bloquea** en el frontend y no se permiten modificaciones del empleado. Se envía notificación a RRHH.
 * **Validado:** El administrador de RRHH ha aprobado el 100% de los campos y archivos. El proceso de onboarding se cierra con éxito y se inicia el flujo de contratación corporativo.
-* **Rechazado_Subsanacion:** Si RRHH detecta un error en cualquier campo o archivo (por ejemplo, firma ausente en Modelo 145 o NSS erróneo), rechaza esos elementos específicos agregando un comentario explicativo. **El formulario se desbloquea únicamente para los elementos rechazados**, manteniendo el resto en modo lectura para el empleado. Una vez corregido, retorna a `Completado_Pendiente_Validacion`.
+* **RechazadoSubsanacion:** Si RRHH detecta un error en cualquier campo o archivo (por ejemplo, firma ausente en Modelo 145 o NSS erróneo), rechaza esos elementos específicos agregando un comentario explicativo. **El formulario se desbloquea únicamente para los elementos rechazados**, manteniendo el resto en modo lectura para el empleado. Una vez corregido, retorna a `CompletadoPendienteValidacion`.
 
 ---
 

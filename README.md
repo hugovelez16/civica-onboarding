@@ -32,8 +32,8 @@ El análisis conceptual, diseño de datos y arquitectura de seguridad se encuent
 El expediente del nuevo empleado avanza de forma lógica a través de los siguientes estados:
 
 ```
-Creado ──► Enviado_Enlace ──► En_Progreso ──► Completado_Pendiente_Validacion ──► Validado (Fin)
+Creado ──► EnviadoEnlace ──► EnProgreso ──► CompletadoPendienteValidacion ──► Validado (Fin)
                                  ▲                          │
                                  │                          ▼
-                                 └───────────────── Rechazado_Subsanacion (rrhh rechaza datos)
+                                 └───────────────── RechazadoSubsanacion (rrhh rechaza datos)
 ```
