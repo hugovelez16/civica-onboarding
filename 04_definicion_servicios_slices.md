@@ -16,7 +16,7 @@ El sistema se diseñará combinando dos patrones arquitectónicos clave:
 
 2. **Arquitectura Hexagonal (Ports & Adapters):**
    * Dentro de cada slice, se aísla el núcleo de negocio (Dominio y Aplicación) de los detalles tecnológicos (Frameworks, Bases de Datos, APIs Externas).
-   * **Domain (Núcleo):** Contiene las entidades puras de negocio, reglas de validación intrínsecas y eventos. No depende de ninguna librería externa (salvo Lombok).
+   * **Domain (Núcleo):** Contiene las entidades puras de negocio (POJOs), objetos de valor (representados de forma nativa e inmutable mediante Java Records) y eventos de dominio. Es completamente puro y no tiene dependencias de librerías o frameworks externos (libre de Lombok, Spring o JPA).
    * **Application (Ports & Use Cases):** Define los casos de uso (puertos de entrada) e interfaces para interactuar con el exterior (puertos de salida).
    * **Infrastructure (Adapters):** Implementa los detalles técnicos. Controladores REST (adaptador de entrada), repositorios Spring Data JPA (adaptador de salida) y clientes externos.
 
