@@ -25,6 +25,12 @@ Dentro de cada *Slice*, el código se divide en tres capas concéntricas para ai
   * **Aislamiento del Core:** El dominio no sabe que existe Spring Boot, bases de datos o HTTP. Esto lo hace muy fácil de testear de forma unitaria.
   * **Flexibilidad tecnológica:** Se puede cambiar la base de datos o el framework web sin modificar la lógica de negocio, simplemente creando nuevos adaptadores para los puertos.
 
+### 1.3 Screaming Architecture
+El diseño de la aplicación seguirá el principio de **Screaming Architecture** (Arquitectura que grita). Esto significa que la estructura de directorios y el nombrado de los archivos reflejarán explícitamente el dominio del negocio y los casos de uso, en lugar de los patrones de diseño o frameworks subyacentes.
+
+* **Organización de alto nivel:** La raíz del proyecto mostrará directamente los módulos de negocio (los Slices: `auth`, `configuration`, `onboarding`, `validation`, `shared`), dejando claro de un vistazo el propósito de la aplicación.
+* **Nombrado de componentes:** En la capa de aplicación, evitaremos sufijos genéricos y aglutinadores como `*Manager` o `*Service`. En su lugar, utilizaremos nombres orientados a la acción para los casos de uso, como `SubmitOnboardingFormUseCase` o `RequestMagicLinkUseCase`, facilitando la trazabilidad desde los requisitos funcionales hasta el código fuente.
+
 ---
 
 ## 2. Decisiones de Diseño y Justificaciones

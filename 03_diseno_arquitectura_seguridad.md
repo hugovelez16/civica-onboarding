@@ -44,7 +44,9 @@ sequenceDiagram
 1. **Generación Criptográfica Fuerte:** Los tokens de acceso se generarán utilizando un generador de números aleatorios criptográficamente seguro (como `SecureRandom` en Java) y se codificarán en Base64 o representarán como un UUID v4.
 2. **Almacenamiento Seguro (Hashing):** El servidor **nunca** almacenará los tokens OTP en texto plano en la base de datos para evitar que un acceso no autorizado a la misma permita comprometer accesos activos. Se almacenará únicamente el Hash SHA-256 del token (`token_otp_hash`).
 3. **Ciclo de Vida y Expiración:**
-   * **Duración Corta:** Los enlaces de acceso iniciales expiran en 24 horas. Los enlaces OTP de reintento o subsanación expiran en 15 minutos.
+   * **Tiempos de Vida (TTL) diferenciados según el origen:**
+     * **48 horas:** Para los enlaces generados de forma asíncrona por el sistema, como la invitación inicial de acceso o los correos de **notificación de subsanación** enviados tras una revisión de RRHH (ya que el usuario puede tardar en abrir su correo).
+     * **15 minutos:** Única y exclusivamente para los enlaces OTP generados bajo demanda por el propio usuario desde la pantalla de login (cuando solicita manualmente un "enlace de acceso rápido").
    * **Un Solo Uso (Single-Use):** Una vez que el backend valida el token con éxito, inmediatamente marca en la base de datos `token_usado = TRUE` invalidándolo para futuras peticiones.
 4. **Manejo de Sesión Web:**
    * Al validarse el OTP, el backend emite una cookie de sesión cifrada que almacena el identificador de sesión.
@@ -52,6 +54,7 @@ sequenceDiagram
      * `HttpOnly`: Previene el acceso al token mediante scripts JavaScript (protección ante robo de sesión por XSS).
      * `Secure`: Obliga a que la cookie sólo sea transmitida sobre conexiones HTTPS.
      * `SameSite=Strict`: Restringe la cookie para que no sea enviada en peticiones de origen cruzado, mitigando ataques CSRF.
+   * **Precedencia de Sesión Activa:** La validación de sesión mediante Cookie tendrá SIEMPRE precedencia sobre la validación del Token OTP en la URL. Si un usuario intenta acceder a través de un magic link (usado o expirado), pero su navegador posee una Cookie de sesión activa y válida, el sistema ignorará el error del token y le permitirá el acceso redirigiéndole a su formulario de onboarding.
 5. **Mitigación de Fuerza Bruta y Denial of Service (DoS):**
    * Se aplicará un **Rate Limiting** a nivel de la API de autenticación (`POST /api/auth/otp/login` y `POST /api/auth/otp/request`).
    * Límite: Máximo 5 peticiones de autenticación por IP y correo electrónico en un intervalo de 15 minutos. Superado el límite, el backend devolverá `HTTP 429 Too Many Requests`.
